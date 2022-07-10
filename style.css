@@ -5,8 +5,20 @@
     user-select: none;
 }
 
+:root {
+    --primry-clr: #1a1f28;
+    --secondray-clr: #242c3770;
+    --blue-clr: #0070cc;
+    --white: #fff;
+    --border-radius: 10px;
+    --shadow: 4px 6px 10px 0px #13171e9c;
+    --inner-shadow: inset 0px -200px 100px 0px #00000080;
+    --transition: .3s;
+}
+
 body {
-    background-color: #1A1F28;
+    background: var(--primry-clr);
+    background: linear-gradient(120deg, rgba(26, 31, 40, 1) 25%, rgba(65, 73, 85, 1) 51%, rgba(26, 31, 40, 1) 75%);
     font-family: 'Inter', sans-serif;
     font-weight: 500;
 }
@@ -16,12 +28,12 @@ i {
 }
 
 i:hover {
-    color: #0070cc;
-    transition: .3s
+    transition: var(--transition);
+    opacity: 0.8;
 }
 
 a {
-    color: #fff;
+    color: var(--white);
     text-decoration: none;
 }
 
@@ -32,14 +44,15 @@ a {
 }
 
 nav {
+    height: 40px;
+    width: 100%;
+    padding: 0 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #242C37;
-    height: 40px;
-    border-radius: 10px;
-    padding: 0 10px;
-    box-shadow: 4px 6px 10px 0px #13171e9c;
+    background-color: var(--secondray-clr);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
 }
 
 .content {
@@ -50,13 +63,13 @@ nav {
 .sideBar {
     width: 20%;
     height: 600px;
-    background-color: #242C37;
-    border-radius: 10px;
+    background-color: var(--secondray-clr);
+    border-radius: var(--border-radius);
     margin: 10px 0;
     padding: 10px 20px;
     display: flex;
     flex-direction: column;
-    box-shadow: 4px 6px 10px 0px #13171e9c;
+    box-shadow: var(--shadow);
 }
 
 .sideBar-links {
@@ -72,49 +85,58 @@ nav {
 }
 
 .sideBar a:hover {
-    color: #0070cc;
-    transition: .3s
+    color: var(--blue-clr);
+    transition: var(--transition);
 }
 
 .games {
     width: 78%;
     height: auto;
-    background-color: #242C37;
-    border-radius: 10px;
     margin: 10px 0;
     padding: 10px;
     display: flex;
     flex-direction: column;
-    box-shadow: 4px 6px 10px 0px #13171e9c;
+    background-color: var(--secondray-clr);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
 }
 
 .ad-game {
     height: 400px;
     width: 100%;
-    border-radius: 10px;
-    background-color: #242C37;
+    border-radius: var(--border-radius);
+    background-color: var(--primry-clr);
     background-image: url(img/horizon-forbidden-west-screenshot-02-disclaimer-02oct20.webp);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     position: relative;
     cursor: pointer;
-    box-shadow: inset 0px -200px 100px 0px #00000080;
+    box-shadow: var(--inner-shadow);
 }
 
 .ad-game-buy-btn {
     height: 40px;
-    width: auto;
-    font-size: 18px;
+    min-width: auto;
+    font-size: 12px;
     border: none;
     outline: 0;
-    background-color: #0070cc;
+    background-color: var(--blue-clr);
     padding: 10px;
-    color: #fff;
+    color: var(--white);
     position: absolute;
     bottom: 10px;
     right: 10px;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
+}
+
+.game-cart {
+    height: auto;
+    width: fit-content;
+    background-color: var(--blue-clr);
+    padding: 10px;
+    margin: 0 0 0 5px;
+    border-radius: var(--border-radius);
 }
 
 h3 {
@@ -134,30 +156,34 @@ h3 {
 }
 
 .game {
-    height: 250px;
-    width: 250px;
+    height: auto;
+    width: 20%;
     margin: 10px 10px;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     position: relative;
-    box-shadow: 4px 6px 10px 0px #13171e9c;
+    box-shadow: var(--shadow);
 }
 
 .game-img {
     width: 100%;
     height: 100%;
-    border-radius: inherit;
+    border-radius: var(--border-radius);
 }
 
-.games-list .game .buyBtn {
+.buyBtn {
     height: auto;
-    width: auto;
-    border-radius: 10px;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: var(--border-radius);
     font-size: 18px;
     border: none;
     outline: 0;
     background-color: #111111b5;
-    padding: 10px;
-    color: #fff;
+    padding: 5px;
+    color: var(--white);
     cursor: pointer;
     position: absolute;
     bottom: 10px;
@@ -178,12 +204,25 @@ h3 {
     .games {
         width: 100%;
     }
+
+    .game {
+        width: 30%;
+        height: auto;
+    }
 }
 
-@media (max-width:733px) {
+@media (max-width:691px) {
+    .games-list {
+        justify-content: space-between;
+    }
+
     .game {
-        width: 200px;
+        width: 40%;
         height: auto;
+    }
+
+    .games-list .game .buyBtn {
+        display: none;
     }
 
     h3 {
@@ -191,10 +230,9 @@ h3 {
     }
 }
 
-@media (max-width:510px) {
+@media (max-width:300px) {
     .game {
-        width: 120px;
-        height: auto;
+        width: 100%;
     }
 
     h3 {
